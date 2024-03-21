@@ -1,0 +1,45 @@
+server:
+  port: 9800
+logging:
+  level:
+    org.springframework.web: INFO
+    com.github.binarywang.demo.wx.cp: DEBUG
+    me.chanjar.weixin: DEBUG
+
+#多实例配置
+spring:
+  redis:
+    database: 0
+    host: 172.16.6.122
+    password: search@123!
+    port: 6379
+wechat:
+  cp:
+    appConfigs:
+      - agentId: 1000036
+        corpId: ww4832047240e12766
+        secret: MDgooEqpsmTKem6HFrH_EBC16cqDANG1lMm-wua_MI8
+        token: IlLli5XNoem5Bwm
+        aesKey: Wcvu6Hw2MZ6uOc6Awni1JtM9I4eC4NCGToW7s3S61Rd
+#      - agentId: 1000002
+#        corpId: xxxx
+#        secret: 1111
+#        token: 111
+#        aesKey: 111
+
+##单实例配置
+#wechat:
+#  cp:
+#    corpId: 111
+#    appConfigs:
+#      - agentId: 1000001
+#        secret: 1111
+#        token: 111
+#        aesKey: 111
+#      - agentId: 1000002
+#        secret: 1111
+#        token: 111
+#        aesKey: 111
+model:
+    chat:
+        url: http://172.16.6.30:4030/api/messager/v1/bots/webhook
