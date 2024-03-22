@@ -32,6 +32,7 @@ public class ChatServiceImpl implements ChatService {
         if (!StringUtils.isEmpty(res)){
             ChatAnswer chatAnswer = JSONObject.parseObject(res, ChatAnswer.class);
             String text = chatAnswer.getGenerations().get(0).getText();
+            text = text + "\n此回复基于大模型算法自动生成，仅供参考。";
             return text;
         }else {
             return "智能助手开小差了，请稍后再试";

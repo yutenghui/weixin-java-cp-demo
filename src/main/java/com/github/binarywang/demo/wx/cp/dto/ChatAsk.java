@@ -13,4 +13,6 @@ public class ChatAsk {
 
     private String query;
 
+    private String name;
+
 }

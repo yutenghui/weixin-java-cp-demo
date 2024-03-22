@@ -42,4 +42,4 @@ wechat:
 #        aesKey: 111
 model:
     chat:
-        url: http://172.16.6.30:4030/api/messager/v1/bots/webhook
+        url: http://172.16.7.28:4030/api/messager/v1/bots/webhook

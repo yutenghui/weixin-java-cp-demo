@@ -49,6 +49,7 @@ public class WxPortalController {
         log.info("\n接收到来自微信服务器的认证消息：signature = [{}], timestamp = [{}], nonce = [{}], echostr = [{}]",
             signature, timestamp, nonce, echostr);
 
+        log.info("开始请求时间："+System.currentTimeMillis());
         if (StringUtils.isAnyBlank(signature, timestamp, nonce, echostr)) {
             throw new IllegalArgumentException("请求参数非法，请核实!");
         }
