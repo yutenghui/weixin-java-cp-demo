@@ -3,6 +3,7 @@ package com.github.binarywang.demo.wx.cp.service.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.github.binarywang.demo.wx.cp.dto.ChatAnswer;
 import com.github.binarywang.demo.wx.cp.dto.ChatAsk;
+import com.github.binarywang.demo.wx.cp.dto.Generation;
 import com.github.binarywang.demo.wx.cp.service.ChatService;
 import com.github.binarywang.demo.wx.cp.utils.JsonUtils;
 import com.github.binarywang.demo.wx.cp.utils.OkHttpUtils;
@@ -31,8 +32,14 @@ public class ChatServiceImpl implements ChatService {
         log.info("chat response："+res);
         if (!StringUtils.isEmpty(res)){
             ChatAnswer chatAnswer = JSONObject.parseObject(res, ChatAnswer.class);
-            String text = chatAnswer.getGenerations().get(0).getText();
-            text = text + "\n此回复基于大模型算法自动生成，仅供参考。";
+            Generation generation = chatAnswer.getGenerations().get(0);
+            String reference = generation.getGenerationInfo().getReference();
+            String text = generation.getText();
+            text = text + "\n\n此回复基于大模型算法自动生成，仅供参考。";
+            if (StringUtils.isNotBlank(reference)){
+                text = text + "参考" + reference;
+            }
+
             return text;
         }else {
             return "智能助手开小差了，请稍后再试";

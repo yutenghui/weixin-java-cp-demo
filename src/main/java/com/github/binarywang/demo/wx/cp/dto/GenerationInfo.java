@@ -11,6 +11,8 @@ public class GenerationInfo {
     @SerializedName("finish_reason")
     private String finishReason;
 
+    private String reference;
+
     public String getFinishReason() {
         return finishReason;
     }

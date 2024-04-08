@@ -46,7 +46,7 @@ public class MsgHandler extends AbstractHandler {
 
         otherThreadPoolExecutor.submit(
             () -> {
-                chat(wxMessage,context,cpService,sessionManager);
+                chat(wxMessage);
             }
         );
 
@@ -55,8 +55,7 @@ public class MsgHandler extends AbstractHandler {
 
     }
 
-    public void chat(WxCpXmlMessage wxMessage, Map<String, Object> context, WxCpService cpService,
-                     WxSessionManager sessionManager){
+    public void chat(WxCpXmlMessage wxMessage){
         final String msgType = wxMessage.getMsgType();
         String message = wxMessage.getContent();
         String content = "";
@@ -70,7 +69,7 @@ public class MsgHandler extends AbstractHandler {
             chatAsk.setName(openId);
             content = chatService.chat(chatAsk);
         }
-
+        log.info("推送消息至企业微信");
         weChatService.send(openId,content);
 
     }
