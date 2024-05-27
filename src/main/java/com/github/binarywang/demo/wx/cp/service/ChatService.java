@@ -10,5 +10,5 @@ import com.github.binarywang.demo.wx.cp.dto.ChatAsk;
  */
 public interface ChatService {
 
-    public String chat(ChatAsk chatAsk);
+    public void chat(ChatAsk chatAsk);
 }

@@ -11,8 +11,14 @@ import lombok.Data;
 @Data
 public class ChatAsk {
 
-    private String query;
+    private String message;
 
-    private String name;
+    private String sender;
+
+    private String rasa_url = "";
+
+    private MetaData metadata = new MetaData();
+
+    private Integer stream = 1;
 
 }

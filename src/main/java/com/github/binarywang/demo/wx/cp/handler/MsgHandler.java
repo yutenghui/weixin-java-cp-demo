@@ -1,11 +1,8 @@
 package com.github.binarywang.demo.wx.cp.handler;
 
-import com.alibaba.fastjson.JSON;
 import com.github.binarywang.demo.wx.cp.builder.TextBuilder;
 import com.github.binarywang.demo.wx.cp.dto.ChatAsk;
 import com.github.binarywang.demo.wx.cp.service.ChatService;
-import com.github.binarywang.demo.wx.cp.service.WeChatService;
-import com.github.binarywang.demo.wx.cp.utils.JsonUtils;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.api.WxConsts;
 import me.chanjar.weixin.common.session.WxSessionManager;
@@ -27,9 +24,6 @@ public class MsgHandler extends AbstractHandler {
 
     @Autowired
     private ChatService chatService;
-
-    @Autowired
-    private WeChatService weChatService;
 
     @Autowired
     private ThreadPoolExecutor otherThreadPoolExecutor;
@@ -58,19 +52,16 @@ public class MsgHandler extends AbstractHandler {
     public void chat(WxCpXmlMessage wxMessage){
         final String msgType = wxMessage.getMsgType();
         String message = wxMessage.getContent();
-        String content = "";
         if (msgType == null) {
             // 如果msgType没有，就自己根据具体报文内容做处理
         }
         String openId = wxMessage.getFromUserName();
         if (!msgType.equals(WxConsts.XmlMsgType.EVENT)) {
             ChatAsk chatAsk = new ChatAsk();
-            chatAsk.setQuery(message);
-            chatAsk.setName(openId);
-            content = chatService.chat(chatAsk);
+            chatAsk.setMessage(message);
+            chatAsk.setSender(openId);
+            chatService.chat(chatAsk);
         }
-        log.info("推送消息至企业微信");
-        weChatService.send(openId,content);
 
     }
 
