@@ -13,6 +13,31 @@ spring:
     host: 172.16.6.122
     password: search@123!
     port: 6379
+  datasource:
+    url: jdbc:mysql://172.16.6.122:3306/wechat?useSSL=false&autoReconnect=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: search@123!
+    type: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    hikari:
+        pool-name: MyHikariCP
+        #最小空闲连接，默认值10，小于0或大于maximum-pool-size，都会重置为maximum-pool-size
+        minimum-idle: 100
+        #空闲连接存活最大时间，默认600000(10分钟)
+        idle-timeout: 280000
+        #最大连接数，小于等于0会被重置为默认值10；大于零小于1会被重置为minimum-idle的值
+        maximum-pool-size: 200
+        #空闲连接超时时间，默认值600000（10分钟）
+        validationTimeout: 3000
+        #连接超时时间:毫秒，小于250毫秒，否则被重置为默认值30秒
+        connection-timeout: 5000
+        #连接最大存活时间.不等于0且小于30秒，会被重置为默认值30分钟.设置应该比mysql设置的超时时间短
+        max-lifetime: 280000
+        #连接测试查询
+        connection-test-query: select 1
+    sql:
+        init:
+            platform: mysql
 wechat:
   cp:
     appConfigs:
@@ -21,11 +46,11 @@ wechat:
         secret: MDgooEqpsmTKem6HFrH_EBC16cqDANG1lMm-wua_MI8
         token: IlLli5XNoem5Bwm
         aesKey: Wcvu6Hw2MZ6uOc6Awni1JtM9I4eC4NCGToW7s3S61Rd
-#      - agentId: 1000002
-#        corpId: xxxx
-#        secret: 1111
-#        token: 111
-#        aesKey: 111
+      - agentId: 1000008
+        corpId: ww4832047240e12766
+        secret: uMcw_y0zIjc5UyEwehigB7oQB9jn1B8o2dOfxnQluUc
+        token: IlLli5XNoem5Bwm
+        aesKey: Wcvu6Hw2MZ6uOc6Awni1JtM9I4eC4NCGToW7s3S61Rd
 
 ##单实例配置
 #wechat:
@@ -43,3 +68,5 @@ wechat:
 model:
     chat:
         url: http://172.16.7.28:4031/api/messager/v1/bots/webhook
+        massUrl: http://172.16.7.131:31757/api/app/workflows/run/
+        apikey: BOB_MAAS-Lcs8JnoZ.xXpN2MYdLgkIB39irHbhyuH0cOlQxAku

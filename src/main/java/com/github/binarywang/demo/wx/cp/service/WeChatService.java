@@ -12,4 +12,6 @@ public interface WeChatService {
 
     public void send(String touser,String content);
 
+    public void send(String touser,String content,Integer agentid);
+
 }

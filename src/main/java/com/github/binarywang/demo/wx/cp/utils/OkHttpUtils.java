@@ -1,21 +1,14 @@
 package com.github.binarywang.demo.wx.cp.utils;
 
-import com.alibaba.fastjson.JSONObject;
 import okhttp3.*;
-import okhttp3.sse.EventSource;
-import okhttp3.sse.EventSourceListener;
-import okhttp3.sse.EventSources;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cglib.beans.BeanMap;
-import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
 public class OkHttpUtils {
@@ -234,10 +227,10 @@ public class OkHttpUtils {
      * @param url
      * @return
      */
-    public static void getAsyn(String url, Headers headers, Callback callback) {
+    public static void getAsync(String url, Headers headers, Callback callback) {
         Request.Builder builder = new Request.Builder();
         builder.url(url);
-        log.debug("getAsyn url={}", url);
+        log.debug("getAsync url={}", url);
         if (headers != null && headers.size() > 0) {
             builder.headers(headers);
             log.debug("get headers={}", headers);
@@ -253,8 +246,8 @@ public class OkHttpUtils {
      * @param url
      * @return
      */
-    public static void getAsyn(String url, Callback callback) {
-        getAsyn(url, null, callback);
+    public static void getAsync(String url, Callback callback) {
+        getAsync(url, null, callback);
     }
 
 
@@ -266,6 +259,7 @@ public class OkHttpUtils {
             .url(url)
             .post(body)
             .addHeader("content-type", "application/json")
+            .addHeader("MAAS-API-KEY", "BOB_MAAS-Lcs8JnoZ.xXpN2MYdLgkIB39irHbhyuH0cOlQxAku")
             .build();
         return request;
     }

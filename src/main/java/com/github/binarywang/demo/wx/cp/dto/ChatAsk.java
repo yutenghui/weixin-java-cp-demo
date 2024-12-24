@@ -21,4 +21,6 @@ public class ChatAsk {
 
     private Integer stream = 1;
 
+    private Integer agentid;
+
 }

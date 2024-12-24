@@ -11,12 +11,4 @@ public class LlmOutput {
     @SerializedName("model_name")
     private String modelName;
 
-    public String getModelName() {
-        return modelName;
-    }
-
-    public void setModelName(String modelName) {
-        this.modelName = modelName;
-    }
-
 }

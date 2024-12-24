@@ -23,7 +23,10 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class MsgHandler extends AbstractHandler {
 
     @Autowired
-    private ChatService chatService;
+    private ChatService chatServiceImpl;
+
+    @Autowired
+    private ChatService AIChatServiceImpl;
 
     @Autowired
     private ThreadPoolExecutor otherThreadPoolExecutor;
@@ -52,15 +55,23 @@ public class MsgHandler extends AbstractHandler {
     public void chat(WxCpXmlMessage wxMessage){
         final String msgType = wxMessage.getMsgType();
         String message = wxMessage.getContent();
+        String agentId = wxMessage.getAgentId();
         if (msgType == null) {
             // 如果msgType没有，就自己根据具体报文内容做处理
         }
         String openId = wxMessage.getFromUserName();
         if (!msgType.equals(WxConsts.XmlMsgType.EVENT)) {
             ChatAsk chatAsk = new ChatAsk();
+            chatAsk.setAgentid(Integer.valueOf(agentId));
             chatAsk.setMessage(message);
             chatAsk.setSender(openId);
-            chatService.chat(chatAsk);
+            if ("1000036".equals(agentId)){
+                chatServiceImpl.chat(chatAsk);
+            }
+            if ("1000008".equals(agentId)){
+                AIChatServiceImpl.chat(chatAsk);
+            }
+
         }
 
     }
