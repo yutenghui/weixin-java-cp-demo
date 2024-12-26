@@ -10,13 +10,13 @@ logging:
 spring:
   redis:
     database: 0
-    host: 172.16.6.122
+    host: 172.17.2.168
     password: search@123!
     port: 6379
   datasource:
-    url: jdbc:mysql://172.16.6.122:3306/wechat?useSSL=false&autoReconnect=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://172.17.2.168:3306/wechat?useSSL=false&autoReconnect=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
     username: root
-    password: search@123!
+    password: byjk@2024
     type: com.zaxxer.hikari.HikariDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
     hikari:
@@ -67,6 +67,6 @@ wechat:
 #        aesKey: 111
 model:
     chat:
-        url: http://172.16.7.28:4031/api/messager/v1/bots/webhook
-        massUrl: http://172.16.7.131:31757/api/app/workflows/run/
-        apikey: BOB_MAAS-Lcs8JnoZ.xXpN2MYdLgkIB39irHbhyuH0cOlQxAku
+        url: http://172.17.2.168:4031/api/messager/v1/bots/webhook
+        massUrl: https://172.17.2.106:30522/maas-api/api/app/workflows
+        apikey: BOB_MAAS-dhBSYk6P.SyoCVtgdtkZ3jHtAmfZOiaA7Z9XlfPdy
