@@ -1,5 +1,5 @@
 server:
-  port: 9800
+  port: 8080
 logging:
   level:
     org.springframework.web: INFO
@@ -68,5 +68,5 @@ wechat:
 model:
     chat:
         url: http://172.17.2.168:4031/api/messager/v1/bots/webhook
-        massUrl: https://172.17.2.106:30522/maas-api/api/app/workflows
+        massUrl: http://172.17.2.106:30522/api/app/workflows/run/
         apikey: BOB_MAAS-dhBSYk6P.SyoCVtgdtkZ3jHtAmfZOiaA7Z9XlfPdy
