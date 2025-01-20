@@ -258,8 +258,7 @@ public class OkHttpUtils {
         Request request = new Request.Builder()
             .url(url)
             .post(body)
-            .addHeader("content-type", "application/json")
-            .addHeader("MAAS_API_KEY", "BOB_MAAS-Lcs8JnoZ.xXpN2MYdLgkIB39irHbhyuH0cOlQxAku")
+            .addHeader("MAAS_API_KEY", "BOB_MAAS-dhBSYk6P.SyoCVtgdtkZ3jHtAmfZOiaA7Z9XlfPdy")
             .build();
         return request;
     }

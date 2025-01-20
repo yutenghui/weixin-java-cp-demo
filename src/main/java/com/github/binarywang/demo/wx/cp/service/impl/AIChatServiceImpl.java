@@ -60,7 +60,6 @@ public class AIChatServiceImpl implements ChatService {
 
         chatReq.setQuery(chatAsk.getMessage());
         chatReq.setStreaming(true);
-        chatReq.setConversation_id(dialogueContext.getConversationId());
         String param = JSON.toJSONString(chatReq);
         log.info("调用模型参数："+param);
         Request request = OkHttpUtils.buildRequest(modelChatUrl, param);

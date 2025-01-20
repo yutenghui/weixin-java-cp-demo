@@ -8,9 +8,6 @@ import lombok.Data;
 @Data
 public class ChatReq {
 
-
-    private String conversation_id;
-
     private Inputs inputs;
 
     private String query;
